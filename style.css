@@ -28,6 +28,11 @@ p {
 a {
     text-decoration: none;
     position: relative;
+    transition: opacity 300ms ease;
+}
+
+a:hover {
+    opacity: 0.6;
 }
 
 li {
@@ -110,16 +115,50 @@ nav {
     align-items: center;
 }
 
+.wave {
+    display: inline-block;
+    animation: animate-wave 500ms infinite ease-in-out;
+}
+
+@keyframes animate-wave {
+0% {
+    transform: rotate(0);
+}
+50% {
+    transform: rotate(30deg);
+}
+100% {
+    transform: rotate(0);
+}
+}
+
+
 .about-me__info {
     display: flex;
     flex-direction: column;
 }
+
+
 
 .about-me__picture--mask {
     border: 1px solid black;
     border-radius: 50%;
     display: inline-block;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+    max-width: 200px;
+    animation: animate-profile-picture 800ms 200ms backwards;
+}
+
+@keyframes animate-profile-picture {
+    0% {
+        transform: scale(0)
+    }
+    80% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .about-me__info--container {
@@ -133,10 +172,12 @@ nav {
 }
 .about-me__info--title {
     margin: 24px;
+    animation: fade-up 650ms 400ms backwards;
 }
 .about-me__info--para {
     font-size: 20px;
     margin-bottom: 28px;
+    animation: fade-up 650ms 600ms backwards;
 }
 
 .about-me__link {
@@ -145,15 +186,41 @@ nav {
     padding: 0 16px;
 }
 
+.about-me__links {
+    animation: fade-up 650ms 600ms backwards;
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 .about-me__img--container {
     flex: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .about-me__img {
     width: 100%;
+    max-width: 600px;
     margin: 24px;
+    animation: fade-in 1200ms 800ms backwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* LANGUAGES */
@@ -359,15 +426,20 @@ html {
     }
 
     .project__description {
-        top: 20%;
+        top: 10%;
+        left: 50%;
     }
     
     .project__description--title {
-        font-size: 30px;
+        font-size: 20px;
+    } 
+
+    .project__description--subtitle {
+        font-size: 16px;
     } 
 
    .project__description--para {
-    font-size: 14px ;
+    font-size: 12px ;
    }
 
 }
